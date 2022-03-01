@@ -1,7 +1,7 @@
 # Domain Service on Polygon Layer 2
-## Under Development!!
 
-## This app let's the user deploy a domain service that can mint domains in the form of NFTs.
+Warning!! App under development!
+This app let's the user deploy a domain service that can mint domains in the form of NFTs.
 
 ### Instructions
 Make sure you have the LTS version of Node installed.
