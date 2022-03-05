@@ -49,7 +49,7 @@ Note: Don't forget to also change the domain in: domainContract.setRecord and do
 
 Test
 ```shell
-npx hardhat run scripts/run.js
+npx hardhat run test/test.js
 ```
 
 Deploy Testnet
