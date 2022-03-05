@@ -30,7 +30,7 @@ contract Domains is ERC721URIStorage {
   mapping(string => address) public domains;
   mapping(string => string) public records;
   mapping (uint => string) public names;
-
+  
   // Set custom errors
   error Unauthorized();
   error AlreadyRegistered();
