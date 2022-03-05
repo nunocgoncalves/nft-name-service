@@ -18,6 +18,7 @@ contract Domains is ERC721URIStorage {
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
+  address payable public owner;
   string public tld;
 	
   // NFT as SVG
@@ -28,6 +29,7 @@ contract Domains is ERC721URIStorage {
   mapping(string => string) public records;
 
   constructor(string memory _tld) payable ERC721("Polygon Name Service", "PNS") {
+    owner = payable(msg.sender);
     tld = _tld;
     console.log("%s name service deployed", _tld);
   }
@@ -105,4 +107,18 @@ contract Domains is ERC721URIStorage {
 
     _tokenIds.increment();
   }
+  modifier onlyOwner() {
+  require(isOwner());
+  _;
+  }
+
+  function isOwner() public view returns (bool) {
+    return msg.sender == owner;
+  }
+
+  function withdraw() public onlyOwner {
+	  uint amount = address(this).balance;
+	  (bool success, ) = msg.sender.call{value: amount}("");
+	  require(success, "Failed to withdraw Matic");
+  } 
 }

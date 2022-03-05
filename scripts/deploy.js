@@ -1,9 +1,12 @@
 const main = async () => {
+  
   const domainContractFactory = await hre.ethers.getContractFactory('Domains');
+  
   // Set Name Service
   const domainContract = await domainContractFactory.deploy("polygon");
   await domainContract.deployed();
 
+  // Get contract address
   console.log("Contract deployed to:", domainContract.address);
 
   // Register Domain
@@ -11,13 +14,16 @@ const main = async () => {
   await txn.wait();
   console.log("Minted domain domains.polygon");
 
-  txn = await domainContract.setRecord("domains", "My .polygon domain");
+  // Set record for the minted domain
+  txn = await domainContract.setRecord("domains", "Polygon domain for the Polygon Domain Service");
   await txn.wait();
   console.log("Set record for domains.polygon");
 
+  // Get Domain Owner
   const address = await domainContract.getAddress("domains");
   console.log("Owner of domain:", address);
 
+  // Contract Balance
   const balance = await hre.ethers.provider.getBalance(domainContract.address);
   console.log("Contract balance:", hre.ethers.utils.formatEther(balance));
 }

@@ -15,7 +15,7 @@ npm install --save-dev @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs
 npm install @openzeppelin/contracts
 ```
 
-Create hardhat.config.js
+Create hardhat.config.js</br>
 Warning DO NOT GIT ADD this file. Exclude it from the git tree with a .gitignore file!!  
 ```shell
 require("@nomiclabs/hardhat-waffle");
