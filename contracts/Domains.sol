@@ -27,7 +27,7 @@ contract Domains is ERC721URIStorage {
   mapping(string => address) public domains;
   mapping(string => string) public records;
 
-  constructor(string memory _tld) payable ERC721("Ethereum Name Service", "ENS") {
+  constructor(string memory _tld) payable ERC721("Polygon Name Service", "PNS") {
     tld = _tld;
     console.log("%s name service deployed", _tld);
   }

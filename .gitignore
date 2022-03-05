@@ -1,13 +1,40 @@
-node_modules
+# dependencies
+/node_modules
+app/node_modules/
+/.pnp
+
+# package managers
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# secret
 .env
-coverage
+
+# testing
+/coverage
 coverage.json
 typechain
 
-#Hardhat files
+# production
+/build
+
+
+# hardhat files
 cache
 artifacts
 hardhat.config.js
 
-#Remix files
+# remix files
 remix-compiler.config.js
+
+
+

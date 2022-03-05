@@ -3,11 +3,16 @@
 Warning!! App under development!
 This app let's the user deploy a domain service that can mint domains in the form of NFTs.
 
-### Instructions
-Make sure you have the LTS version of Node installed.
-Install dependencies
+### Solidity Instructions
+Make sure you have the LTS version of Node installed.</br>
+Install Hardhat
 ```shell
 npm install --save-dev hardhat
+```
+Install dependencies. Might have been instaled automatically.
+```shell
+npm install --save-dev @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers ethers
+npm install @openzeppelin/contracts
 ```
 
 Create hardhat.config.js
@@ -44,15 +49,27 @@ Note: Don't forget to also change the domain in: domainContract.setRecord and do
 
 Test
 ```shell
-npx hardhat scripts/run.js
+npx hardhat run scripts/run.js
 ```
 
 Deploy Testnet
 ```shell
-npx hardhat scripts/deploy.js --network mumbai
+npx hardhat run scripts/deploy.js --network mumbai
 ```
 
 Deploy Mainnet
 ```shell
-npx hardhat scripts/deploy.js --network polygon
+npx hardhat run scripts/deploy.js --network polygon
+```
+
+### React Instructions
+Change into the app directory</br>
+Install React and other dependencies
+```shell
+npm install
+```
+
+Start development server
+```shell
+npm start
 ```
