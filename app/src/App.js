@@ -15,8 +15,12 @@ const CONTRACT_ADDRESS = '0xCdd529A3464826c9E4bdB29f1bcB8e322C26855e';
 
 const App = () => {
 
-	// Create a stateful variable to store the network next to all the others
+	// Variable to store the network
 	const [network, setNetwork] = useState('');
+
+	// State variables for the Domain functions
+	const [editing, setEditing] = useState(false);
+	const [mints, setMints] = useState([]);
 
 	// State variable that stores the user's public wallet address
 	const [currentAccount, setCurrentAccount] = useState('');
@@ -169,6 +173,70 @@ const App = () => {
 	  }
 	}
 
+	const updateDomain = async () => {
+		if (!record || !domain) { return }
+		setLoading(true);
+		console.log("Updating domain", domain, "with record", record);
+		  try {
+			const { ethereum } = window;
+			if (ethereum) {
+				const provider = new ethers.providers.Web3Provider(ethereum);
+				const signer = provider.getSigner();
+				const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi.abi, signer);
+	
+				let tx = await contract.setRecord(domain, record);
+				await tx.wait();
+				console.log("Record set https://mumbai.polygonscan.com/tx/"+tx.hash);
+	
+				fetchMints();
+				setRecord('');
+				setDomain('');
+			}
+		  } catch(error) {
+			console.log(error);
+		  }
+		setLoading(false);
+	}
+
+	const fetchMints = async () => {
+		try {
+			const { ethereum } = window;
+			if (ethereum) {
+				const provider = new ethers.providers.Web3Provider(ethereum);
+				const signer = provider.getSigner();
+				const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi.abi, signer);
+					
+				// Get all the domain names from the contract
+				const names = await contract.getAllNames();
+					
+				// Get name and record for every domain
+				const mintRecords = await Promise.all(names.map(async (name) => {
+				const mintRecord = await contract.records(name);
+				const owner = await contract.domains(name);
+				return {
+					id: names.indexOf(name),
+					name: name,
+					record: mintRecord,
+					owner: owner,
+				};
+			}));
+	
+			console.log("MINTS FETCHED ", mintRecords);
+			setMints(mintRecords);
+			}
+
+		} catch(error){
+			console.log(error);
+		}
+	}
+	
+	// Run if the currentAccount or the network are changed
+	useEffect(() => {
+		if (network === 'Polygon Mumbai Testnet') {
+			fetchMints();
+		}
+	}, [currentAccount, network]);
+
 	// Render Methods
 	const renderNotConnectedContainer = () => (
 		<div className="connect-wallet-container">
@@ -179,38 +247,54 @@ const App = () => {
 		</div>
   	);
 
-	const renderInputForm = () => {
-		
-		// Check if the user is using the correct network, if not render the switch network button
+	  const renderInputForm = () =>{
+		// Checks if the user is connected to the right network
 		if (network !== 'Polygon Mumbai Testnet') {
 			return (
 				<div className="connect-wallet-container">
-					<h2>Please switch to Polygon Mumbai Testnet</h2>
-					{/* The button calls the switch network function */}
-					<button className='cta-button mint-button' onClick={switchNetwork}>Click here to switch</button>
+					<p>Please connect to the Polygon Mumbai Testnet</p>
 				</div>
 			);
 		}
 
 		return (
 			<div className="form-container">
+				
 				<div className="first-row">
 					<input
 						type="text"
 						value={domain}
-						placeholder="domain"
+						placeholder='domain'
 						onChange={e => setDomain(e.target.value)}
 					/>
 					<p className='tld'> {tld} </p>
 				</div>
-	
+
+				<input
+					type="text"
+					value={record}
+					placeholder='whats ur ninja power?'
+					onChange={e => setRecord(e.target.value)}
+				/>
+				
+				{/* If editing is true, return "Set record" and "Cancel" */}
+				{editing ? (
 				<div className="button-container">
-					{/* Call the mintDomain function when the button is clicked*/}
-					<button className='cta-button mint-button' onClick={mintDomain}>
-						Mint
-					</button> 
+				{/* Call the updateDomain function */}
+					<button className='cta-button mint-button' disabled={loading} onClick={updateDomain}>
+						Set record
+					</button>  
+				{/* If editing is false, render "Cancel" to exit editing mode */}
+					<button className='cta-button mint-button' onClick={() => {setEditing(false)}}>
+						Cancel
+					</button>  
 				</div>
-	
+				) : (
+				// If editing is false, render "Mint"
+				<button className='cta-button mint-button' disabled={loading} onClick={mintDomain}>
+					Mint
+				</button>  
+				)}
 			</div>
 		);
 	}

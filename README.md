@@ -11,8 +11,8 @@ npm install --save-dev hardhat
 ```
 Install dependencies. Might have been instaled automatically.
 ```shell
-npm install --save-dev @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers ethers
-npm install @openzeppelin/contracts
+npm install --save-dev @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers ethers mocha chai
+npm install --save-dev @openzeppelin/contracts @openzeppelin/test-environment 
 ```
 
 Create hardhat.config.js</br>
