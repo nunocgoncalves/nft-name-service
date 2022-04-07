@@ -36,7 +36,7 @@ contract Domains is ERC721URIStorage {
   error AlreadyRegistered();
   error InvalidName(string name);
 
-  constructor(string memory _tld) payable ERC721("Polygon Name Service", "PNS") {
+  constructor(string memory _tld) payable ERC721("Delta Name Service", "DNS") {
     owner = payable(msg.sender);
     tld = _tld;
     console.log("%s name service deployed", _tld);
@@ -102,7 +102,7 @@ contract Domains is ERC721URIStorage {
           abi.encodePacked(
             '{"name": "',
             _name,
-            '", "description": "A domain on the polygon domain service", "image": "data:image/svg+xml;base64,',
+            '", "description": "A name on the delta name service", "image": "data:image/svg+xml;base64,',
             Base64.encode(bytes(finalSvg)),
             '","length":"',
             strLen,

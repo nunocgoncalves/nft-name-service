@@ -10,7 +10,7 @@ import ethLogo from './assets/ethlogo.png';
 // Constants
 const TWITTER_HANDLE = 'nunomiguelcg';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
-const tld = '.polygon';
+const tld = '.delta';
 const CONTRACT_ADDRESS = '0xCdd529A3464826c9E4bdB29f1bcB8e322C26855e';
 
 const App = () => {
@@ -20,6 +20,7 @@ const App = () => {
 
 	// State variables for the Domain functions
 	const [editing, setEditing] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const [mints, setMints] = useState([]);
 
 	// State variable that stores the user's public wallet address
@@ -253,6 +254,8 @@ const App = () => {
 			return (
 				<div className="connect-wallet-container">
 					<p>Please connect to the Polygon Mumbai Testnet</p>
+					{/* The button calls the switch network function */}
+					<button className='cta-button mint-button' onClick={switchNetwork}>Click here to switch</button>
 				</div>
 			);
 		}
@@ -273,7 +276,7 @@ const App = () => {
 				<input
 					type="text"
 					value={record}
-					placeholder='whats ur ninja power?'
+					placeholder='set a record'
 					onChange={e => setRecord(e.target.value)}
 				/>
 				
@@ -312,8 +315,8 @@ const App = () => {
 					<header>
 						
 						<div className="left">
-							<p className="title">Polygon Name Service</p>
-							<p className="subtitle">Your polygon name on the metaverse</p>
+							<p className="title">Delta Name Service</p>
+							<p className="subtitle">Get access to Delta by getting your delta name as an NFT!</p>
 						</div>
 						
 						{/* Display Logo and wallet connection status*/}
