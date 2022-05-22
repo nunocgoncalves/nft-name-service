@@ -11,13 +11,13 @@ package-lock.json
 
 # misc
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
 # secret
 .env
+.env.local
+.env.development.local
+.env.staging.local
+.env.production.local
 
 # testing
 /coverage
