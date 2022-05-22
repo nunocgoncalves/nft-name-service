@@ -1,75 +1,64 @@
-# Domain Service on Polygon Layer 2
+# Delta DAO
 
 Warning!! App under development!
-This app let's the user deploy a domain service that can mint domains in the form of NFTs.
 
-### Solidity Instructions
-Make sure you have the LTS version of Node installed.</br>
-Install Hardhat
-```shell
-npm install --save-dev hardhat
-```
-Install dependencies. Might have been instaled automatically.
-```shell
-npm install --save-dev @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers ethers mocha chai
-npm install --save-dev @openzeppelin/contracts @openzeppelin/test-environment 
-```
+### Objective
 
-Create hardhat.config.js</br>
-Warning DO NOT GIT ADD this file. Exclude it from the git tree with a .gitignore file!!  
-```shell
-require("@nomiclabs/hardhat-waffle");
+Create a community of web3 afficionados for anyone that wants to learn web3 and grow.
 
-module.exports = {
-  solidity: "0.8.10",
-  networks: {
-		mumbai: {
-      url: "[YOUR-ALCHEMY-URL]",
-      accounts: ["[YOUR-PRIVATE KEY]"],
-		},
-    polygon: {
-      url: "[YOUR-ALCHEMY-URL]",
-      accounts: ["[YOUR-PRIVATE KEY]"],
-		}
-  }
-};
-```
+### Concept
 
-Change Name Service
-```shell
-const domainContract = await domainContractFactory.deploy("name-service");
-```
+This dapp allows users to mint a .delta domain as an NFT which gives users access to a community DAO which has access to exclusive content and a weekly newsletter.
 
-Change Domain
-```shell
-let txn = await domainContract.register("domain",  {value: hre.ethers.utils.parseEther('0.1')});
-```
-Note: Don't forget to also change the domain in: domainContract.setRecord and domainContract.getAddress
+### App features
 
+#### MVP (Releasing 27/05/22):
 
-Test
-```shell
-npx hardhat run test/test.js
-```
+##### Marketplace:
 
-Deploy Testnet
-```shell
-npx hardhat run scripts/deploy.js --network mumbai
-```
+- Connect Wallet (Metamask)
+- Check network (Polygon Mainet)
+- Change and add network
+- Mint Functionality
 
-Deploy Mainnet
-```shell
-npx hardhat run scripts/deploy.js --network polygon
-```
+##### DAO:
 
-### React Instructions
-Change into the app directory</br>
-Install React and other dependencies
-```shell
-npm install
-```
+- Connect wallet
+- Check if you own a Delta NFT
+- Add email to receive newsletter
+- Join Discord if you own the NFT
 
-Start development server
-```shell
-npm start
-```
+#### Alpha (New Features):
+
+##### Marketplace
+
+- Sell and Buy NFTs from other users
+
+##### DAO:
+
+- Users who own the NFT will receive governance tokens that will be used to vote on proposals and give grants.
+- Proposal and grant engine (users with a certain amount of governance tokens will be able to create proposals. Any delta member will be able to submit grants. The community will grant chosen projects monthly).
+- Treasurary (user managed will be used to reward users and give grants)
+
+#### Beta (New Features):
+
+##### Marketplace
+
+- Support more networks
+
+##### DAO:
+
+- Staking NFTs to receive governance tokens.
+- Staking governance tokens to receive yield.
+
+### Resources
+
+#### Chainlink:
+
+This Dapp was created during the 2022 Spring Chainlink Hackathon.
+Check out Chainlinks YouTube channel for some awesome resources: https://www.youtube.com/c/chainlink
+
+#### Buildspace:
+
+Buildspaces cohorts are amazing and super easy to follow. Even if you're not a developer I am sure you can go through one of their projects and build something cool yourself.
+Check out their platform: https://buildspace.so/
