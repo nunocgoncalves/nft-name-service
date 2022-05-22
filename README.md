@@ -10,6 +10,8 @@ Create a community of web3 afficionados for anyone that wants to learn web3 and 
 
 This dapp allows users to mint a .delta domain as an NFT which gives users access to a community DAO which has access to exclusive content and a weekly newsletter.
 
+## Roadmap
+
 ### App features
 
 #### MVP (Releasing 27/05/22):
