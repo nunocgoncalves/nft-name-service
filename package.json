@@ -2,17 +2,14 @@
   "name": "delta-dao",
   "version": "0.1.0",
   "description": "A Dapp that allows the users to mint a .delta name in the form of an NFT. The NFT will be the pass for the Delta DAO, a community of web3 enthusiasts that will get exclusive content such as crypto news and a weekly newsletter.",
-  "main": "",
+  "main": "hardhat.config.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": ""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nunocgoncalves/DeltaDAO.git"
-  },
+  "repository": "git+https://github.com/nunocgoncalves/DeltaDAO.git",
   "keywords": [],
   "author": "Nuno Goncalves",
   "license": "AGPL-3.0-or-later",
@@ -21,16 +18,6 @@
   },
   "homepage": "https://github.com/nunocgoncalves/DeltaDAO#readme",
   "devDependencies": {
-    "@codechecks/client": "^0.1.12",
-    "@nomiclabs/hardhat-ethers": "^2.0.5",
-    "@nomiclabs/hardhat-waffle": "^2.0.3",
-    "@openzeppelin/contracts": "^4.5.0",
-    "@openzeppelin/test-environment": "^0.1.9",
-    "chai": "^4.3.6",
-    "eth-gas-reporter": "^0.2.24",
-    "ethereum-waffle": "^3.4.0",
-    "ethers": "^5.6.1",
-    "hardhat": "^2.9.0",
-    "mocha": "^9.2.2"
-  }
+  },
+  "private": null
 }
