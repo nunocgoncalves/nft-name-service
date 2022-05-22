@@ -4,7 +4,7 @@ Warning!! App under development!
 
 ### Objective
 
-Create a community of web3 afficionados for anyone that wants to learn web3 and grow.
+Create a community of web3 aficionados for anyone that wants to learn web3 and grow.
 
 ### Concept
 
@@ -40,7 +40,7 @@ This dapp allows users to mint a .delta domain as an NFT which gives users acces
 
 - Users who own the NFT will receive governance tokens that will be used to vote on proposals and give grants.
 - Proposal and grant engine (users with a certain amount of governance tokens will be able to create proposals. Any delta member will be able to submit grants. The community will grant chosen projects monthly).
-- Treasurary (user managed will be used to reward users and give grants)
+- Treasury (user managed will be used to reward users and give grants)
 
 #### Beta (New Features):
 
@@ -62,5 +62,5 @@ Check out Chainlinks YouTube channel for some awesome resources: https://www.you
 
 #### Buildspace:
 
-Buildspaces cohorts are amazing and super easy to follow. Even if you're not a developer I am sure you can go through one of their projects and build something cool yourself.
+Buildspace's cohorts are amazing and super easy to follow. Even if you're not a developer I am sure you can go through one of their projects and build something cool yourself.
 Check out their platform: https://buildspace.so/
