@@ -70,7 +70,7 @@ contract Domains is ERC721URIStorage {
 
   // Check for a valid domain length
   function valid(string calldata name) public pure returns(bool) {
-  return StringUtils.strlen(name) >= 2 && StringUtils.strlen(name) <= 15;
+  return StringUtils.strlen(name) >= 2 && StringUtils.strlen(name) <= 32;
   }
 
   function register(string calldata name) public payable {

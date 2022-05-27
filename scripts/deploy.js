@@ -9,23 +9,6 @@ const main = async () => {
   // Get contract address
   console.log("Contract deployed to:", domainContract.address);
 
-  // Register Domain
-  let txn = await domainContract.register("delta",  {value: hre.ethers.utils.parseEther('0.1')});
-  await txn.wait();
-  console.log("Minted domain domains.polygon");
-
-  // Set record for the minted domain
-  txn = await domainContract.setRecord("Delta", "Delta-s domain for the Polygon Domain Service");
-  await txn.wait();
-  console.log("Set record for delta.delta");
-
-  // Get Domain Owner
-  const address = await domainContract.getAddress("delta");
-  console.log("Owner of domain:", address);
-
-  // Contract Balance
-  const balance = await hre.ethers.provider.getBalance(domainContract.address);
-  console.log("Contract balance:", hre.ethers.utils.formatEther(balance));
 }
 
 const runMain = async () => {

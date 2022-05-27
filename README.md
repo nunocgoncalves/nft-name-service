@@ -4,11 +4,11 @@ Warning!! App under development!
 
 ### Objective
 
-Create a community of web3 aficionados for anyone that wants to learn web3 and grow.
+Create a community of web3 aficionados for anyone that wants to learn web3.
 
 ### Concept
 
-This dapp allows users to mint a .delta domain as an NFT which gives users access to a community DAO which has access to exclusive content and a weekly newsletter.
+This dapp allows users to mint a .delta domain as an NFT. This gives users access to a community DAO which has access to exclusive content and a weekly newsletter.
 
 ## Roadmap
 
@@ -34,6 +34,7 @@ This dapp allows users to mint a .delta domain as an NFT which gives users acces
 
 ##### Marketplace
 
+- Customize NFT
 - Sell and Buy NFTs from other users
 
 ##### DAO:
