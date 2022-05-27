@@ -36,6 +36,22 @@ const App = () => {
 	// State variables to fetch mints
 	const [mints, setMints] = useState([]);
 
+	// When page is loaded, check if wallet is connected
+	useEffect(() => {
+		checkIfWalletIsConnected();
+	}, [])
+	
+	// Re run every time the currentAccount or network are changed
+	useEffect(() => {
+		
+		if (network === 'Polygon Mumbai Testnet') {
+			fetchMints();
+		}
+
+	}, 
+	
+	[currentAccount, network]);
+	
 	// This componnent allows the Dapp to connect to MetaMask
 	// Other wallets will be supported in the future
 	const connectWallet = async () => {
@@ -134,7 +150,7 @@ const App = () => {
 								{	
 									chainId: '0x13881',
 									chainName: 'Polygon Mumbai Testnet',
-									rpcUrls: ['https://rpc-mumbai.maticvigil.com/'],
+									rpcUrls: ['https://rpc-mumbai.matic.today'],
 									nativeCurrency: {
 											name: "Mumbai Matic",
 											symbol: "MATIC",
@@ -332,17 +348,6 @@ const App = () => {
 		}
 
 	};
-	  
-	// Re run every time the currentAccount or network are changed
-	useEffect(() => {
-		
-		if (network === 'Polygon Mumbai Testnet') {
-			fetchMints();
-		}
-
-	}, 
-	
-	[currentAccount, network]);
 
 	// Render Methods
 	const renderNotConnectedContainer = () => (
@@ -422,7 +427,7 @@ const App = () => {
 			return (
 			
 				<div className="mint-container">
-			  		<p className="subtitle"> Recently minted domains!</p>
+			  		<p className="subtitle"> Minted domains</p>
 			  	<div className="mint-list">
 				
 				{ mints.map((mint, index) => {
@@ -470,11 +475,6 @@ const App = () => {
 		setEditing(true);
 		setDomain(name);
 	}
-
-	// When page is loaded, check if wallet is connected
-	useEffect(() => {
-		checkIfWalletIsConnected();
-	}, [])
 
   	return (
 
