@@ -26,9 +26,6 @@ jobs:
       - node/install-packages:
           # If you are using yarn, change the line below from "npm" to "yarn"
           pkg-manager: yarn
-      - run:
-          name: Run tests
-          command: yarn test
 
 workflows:
   # Below is the definition of your workflow.
